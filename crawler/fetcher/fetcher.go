@@ -3,7 +3,6 @@ package fetcher
 import (
 	"bufio"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -25,21 +24,20 @@ func Fetch(url string) ([]byte, error) {
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("wrong status code: %d", resp.StatusCode)
 	}
-
-	e, respBodyReader := determineEncoding(resp.Body)
-	utf8Reader := transform.NewReader(respBodyReader, e.NewDecoder())
+	bodyReader := bufio.NewReader(resp.Body)
+	e := determineEncoding(bodyReader)
+	utf8Reader := transform.NewReader(bodyReader, e.NewDecoder())
 	return ioutil.ReadAll(utf8Reader)
 
 }
 
-func determineEncoding(r io.Reader) (encoding.Encoding, *bufio.Reader) {
+func determineEncoding(r *bufio.Reader) encoding.Encoding {
 
-	reader := bufio.NewReader(r)
-	bytes, err := reader.Peek(1024) // 对bytes这个对象来说，Peek之后不会有指针偏移，但是对r这个对象来说，会偏移
+	bytes, err := r.Peek(1024) // 对bytes这个对象来说，Peek之后不会有指针偏移，但是对r这个对象来说，会偏移
 	if err != nil {
 		log.Printf("Fetcher error: %v", err)
-		return unicode.UTF8, reader
+		return unicode.UTF8
 	}
 	e, _, _ := charset.DetermineEncoding(bytes, "")
-	return e, reader
+	return e
 }
