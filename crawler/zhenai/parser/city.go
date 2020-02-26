@@ -15,11 +15,12 @@ func ParseCity(contents []byte) engine.ParseResult {
 	result := engine.ParseResult{}
 	for _, m := range matches {
 		//fmt.Printf("ParseCity %s", string(m[2]))
-		result.Items = append(result.Items, "User "+string(m[2])) // City
+		name := string(m[2])
+		result.Items = append(result.Items, "User "+name) // City
 		result.Requests = append(result.Requests, engine.Request{
 			Url: string(m[1]), // Url
 			ParserFunc: func(c []byte) engine.ParseResult {
-				return ParseProfile(c, string(m[2]))
+				return ParseProfile(c, name) // 这里m的作用域是这个for语句，{}里面会共用这个m，这导致所有人的名字是同一个
 			},
 		})
 	}
