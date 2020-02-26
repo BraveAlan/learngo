@@ -20,7 +20,8 @@ func ParseCity(contents []byte) engine.ParseResult {
 		result.Requests = append(result.Requests, engine.Request{
 			Url: string(m[1]), // Url
 			ParserFunc: func(c []byte) engine.ParseResult {
-				return ParseProfile(c, name) // 这里m的作用域是这个for语句，{}里面会共用这个m，这导致所有人的名字是同一个
+				//return ParseProfile(c, string(m[2])) // 这里m的作用域是这个for语句，{}里面会共用这个m，这导致所有人的名字是同一个
+				return ParseProfile(c, name)
 			},
 		})
 	}
