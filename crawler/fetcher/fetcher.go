@@ -15,7 +15,8 @@ import (
 )
 
 func Fetch(url string) ([]byte, error) {
-	resp, err := http.Get(url)
+	//resp, err := http.Get(url)
+	resp, err := MyHttpGet(url)
 	if err != nil {
 		return nil, err
 	}
@@ -28,7 +29,17 @@ func Fetch(url string) ([]byte, error) {
 	e := determineEncoding(bodyReader)
 	utf8Reader := transform.NewReader(bodyReader, e.NewDecoder())
 	return ioutil.ReadAll(utf8Reader)
+}
 
+func MyHttpGet(url string) (*http.Response, error) {
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Printf("error req: %s", url)
+		return &http.Response{}, fmt.Errorf("error to newRequest: %s", url)
+	}
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36")
+	return client.Do(req)
 }
 
 func determineEncoding(r *bufio.Reader) encoding.Encoding {
