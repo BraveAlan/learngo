@@ -33,6 +33,7 @@ func worker(r Request) (ParseResult, error) {
 	body, err := fetcher.Fetch(r.Url)
 	if err != nil {
 		log.Printf("Fetcher: error fetching url %s: %v", r.Url, err)
+		//time.Sleep(time.Duration(20) * time.Millisecond)
 		return ParseResult{}, err
 	}
 	return r.ParserFunc(body), nil
