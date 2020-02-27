@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 
 	"golang.org/x/text/encoding/unicode"
 
@@ -14,7 +15,10 @@ import (
 	"golang.org/x/text/transform"
 )
 
+var rateLimiter = time.Tick(2000 * time.Millisecond)
+
 func Fetch(url string) ([]byte, error) {
+	<-rateLimiter
 	//resp, err := http.Get(url)
 	resp, err := MyHttpGet(url)
 	if err != nil {
@@ -38,7 +42,7 @@ func MyHttpGet(url string) (*http.Response, error) {
 		log.Printf("error req: %s", url)
 		return &http.Response{}, fmt.Errorf("error to newRequest: %s", url)
 	}
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36")
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181")
 	return client.Do(req)
 }
 
