@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Home";
+    var mkdocs_page_name = "\u7b80\u4ecb";
     var mkdocs_page_input_path = "index.md";
     var mkdocs_page_url = null;
   </script>
@@ -48,17 +48,15 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">简介</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a>
+    <li class="toctree-l2"><a class="reference internal" href="#1">1. 安装依赖</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#project-layout">Project layout</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2">2. 创建项目</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-mkdocsdev-server">3. 启动mkdocs的内置dev-server</a>
     </li>
     </ul>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="about/">About</a>
                     </li>
                 </ul>
       </div>
@@ -82,7 +80,7 @@
     
       
     
-    <li>Home</li>
+    <li>简介</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -93,32 +91,33 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
-</ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+                <h1 id="_1">电子书制作流程</h1>
+<p>mkdocs常用于文档写作，官方文档（英文）<a href="https://mkdocs.readthedocs.io/en/stable/">传送门</a></p>
+<h2 id="1">1. 安装依赖</h2>
+<pre><code class="sh">pip install mkdocs
 </code></pre>
+
+<p>常用命令如下：</p>
+<ul>
+<li><code>mkdocs new [dir-name]</code> - 创建一个新项目</li>
+<li><code>mkdocs serve</code> - 启动热加载服务器，监测文档变更并在浏览器上实时预览</li>
+<li><code>mkdocs build</code> - 在当前目录下生成site文件夹，将编写的文档转变成HTML文件</li>
+<li><code>mkdocs -h</code> - 命令帮助</li>
+</ul>
+<h2 id="2">2. 创建项目</h2>
+<p>使用<code>mkdocs new [dir-name]</code>创建<strong>dir-name</strong>文件夹，其结构如下所示：</p>
+<pre><code>mkdocs.yml    # 配置文件
+docs/
+    index.md  # 主页
+    ...       # 其他页面
+</code></pre>
+<p>通常是为一个已经存在的git项目编写文档。因此一般的做法是将<strong>dir-name</strong>文件夹放置在项目的根目录下</p>
+<h2 id="3-mkdocsdev-server">3. 启动mkdocs的内置dev-server</h2>
+<p>MkDocs带有内置的开发服务器，可用于处理文档时预览文档。在与mkdocs.yml配置文件位于同一目录中，</p>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>
@@ -143,8 +142,6 @@ docs/
       
       
       
-        <span style="margin-left: 15px"><a href="about/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
     </span>
 </div>
     <script>var base_url = '.';</script>
@@ -161,5 +158,5 @@ docs/
 
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-03-04 12:26:44
+Build Date UTC : 2020-03-04 15:24:08
 -->
