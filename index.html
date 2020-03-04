@@ -56,6 +56,10 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#3-mkdocsdev-server">3. 启动mkdocs的内置dev-server</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-mkdocsyml">4. mkdocs.yml常用配置</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mkdocs-bug">mkdocs bug</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -102,6 +106,7 @@
 <li><code>mkdocs new [dir-name]</code> - 创建一个新项目</li>
 <li><code>mkdocs serve</code> - 启动热加载服务器，监测文档变更并在浏览器上实时预览</li>
 <li><code>mkdocs build</code> - 在当前目录下生成site文件夹，将编写的文档转变成HTML文件</li>
+<li><code>mkdocs gh-pages</code> - 将site文件夹里的内容push到gh-pages分支</li>
 <li><code>mkdocs -h</code> - 命令帮助</li>
 </ul>
 <h2 id="2">2. 创建项目</h2>
@@ -113,7 +118,14 @@ docs/
 </code></pre>
 <p>通常是为一个已经存在的git项目编写文档。因此一般的做法是将<strong>dir-name</strong>文件夹放置在项目的根目录下</p>
 <h2 id="3-mkdocsdev-server">3. 启动mkdocs的内置dev-server</h2>
-<p>MkDocs带有内置的开发服务器，可用于处理文档时预览文档。在与mkdocs.yml配置文件位于同一目录中，</p>
+<p>MkDocs带有内置的开发服务器，可用于实时预览文档。在与mkdocs.yml配置文件位于同一目录下，运行<code>mkdocs serve</code>可启动Server，效果如下：
+<img alt="mockServer启动" src="assets/mockServer%E5%90%AF%E5%8A%A8.png" /></p>
+<h2 id="4-mkdocsyml">4. mkdocs.yml常用配置</h2>
+<h2 id="mkdocs-bug">mkdocs bug</h2>
+<ol>
+<li>在windows的vscode中切换Shell为bash，然后执行<code>mkdocs serve</code>会报如下错误，换成windows自带的Shell则正常，我才应该是文件路径编码问题。
+   <img alt="mkdocs gh-pages bug" src="assets/mkdocs-gh-pages-bug.png" /></li>
+</ol>
               
             </div>
           </div>
@@ -158,5 +170,5 @@ docs/
 
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-03-04 15:37:34
+Build Date UTC : 2020-03-04 16:07:40
 -->
