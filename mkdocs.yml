@@ -1,5 +1,4 @@
 site_name: My Docs
 theme: readthedocs
 nav:
-  - Home: index.md
-  - About: about.md
+  - 简介: index.md
