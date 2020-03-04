@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-func doWorker(id int, c chan int, w worker) {
+func doWorker(id int, w worker) {
 
 	for n := range w.in { // 会检测close
 		fmt.Printf("Worker %d received %c\n", id, n)
@@ -29,7 +29,7 @@ func createWorker(id int, wg *sync.WaitGroup) worker {
 		},
 	}
 	// 这个channel要做的事
-	go doWorker(id, w.in, w)
+	go doWorker(id, w)
 	return w
 }
 

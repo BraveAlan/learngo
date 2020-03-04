@@ -67,7 +67,7 @@ func main() {
 			return int(math.Pow(float64(a), float64(b)))
 		}, 3, 4))
 
-	fmt.Println(sum(1,2,3))
+	fmt.Println(sum(1, 2, 3))
 	a, b := 3, 4
 	fmt.Println(swap(a, b))
 }

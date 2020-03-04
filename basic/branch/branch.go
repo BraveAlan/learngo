@@ -38,5 +38,5 @@ func main() {
 		grade(99),
 		grade(100),
 		grade(101),
-		)
+	)
 }
