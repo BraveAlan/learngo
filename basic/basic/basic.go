@@ -84,4 +84,10 @@ func main() {
 	fmt.Println(aa, ss, bb)
 	euler()
 	enums()
+	ch := make(chan int, 3)
+	ch <- 1
+	ch <- 2
+	for i := 0; i < 2; i++ {
+		fmt.Println(<-ch)
+	}
 }
